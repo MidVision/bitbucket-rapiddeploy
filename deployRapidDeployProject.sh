@@ -13,7 +13,7 @@ success=1
 echo "$id"
 runningJob=1
 echo "$runningJob"
-milisToSleep=30
+milisToSleep=5
 while [ $runningJob -eq 1 ]
  do
    sleep $milisToSleep
