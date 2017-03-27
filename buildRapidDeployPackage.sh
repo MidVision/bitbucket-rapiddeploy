@@ -29,10 +29,11 @@ fi
 
 curl -X PUT -i -H "Authorization: $RAPIDDEPLOY_AUTH_TOKEN" $RAPIDDEPLOY_URL/ws/deployment/$RAPIDDEPLOY_PROJECT/package/create?packageName=$RAPIDDEPLOY_PACKAGE_NAME&archiveExtension=$RAPIDDEPLOY_ARCHIVE_EXTENSION > response.out
 
-
+echo $(cat response.out)
 
 #curl -X PUT -i -H "Authorization: $RAPIDDEPLOY_AUTH_TOKEN" $RAPIDDEPLOY_URL/ws/deployment/$RAPIDDEPLOY_PROJECT/runjob/deploy/$RAPIDDEPLOY_SERVER/$RAPIDDEPLOY_ENVIRONMENT/$RAPIDDEPLOY_APPLICATION > response.out
 awk '{for (I=1;I<=NF;I++) if ($I == "Id") {print $(I+1)};}' response.out > id.out
+echo $(cat id.out)
 #rm -rf response.out
 id=$(cat id.out | egrep -o '[^][]+')
 if [ -z "$id" ]
