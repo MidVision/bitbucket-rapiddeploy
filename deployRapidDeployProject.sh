@@ -92,6 +92,10 @@ while [ $runningJob -eq 1 ]
  curl -X GET -i -H "Authorization: $RAPIDDEPLOY_AUTH_TOKEN" $RAPIDDEPLOY_URL/ws/deployment/showlog/job/$id > jobLogs.out
  jobLogsResponseString=$(cat jobLogs.out)
  echo "$jobLogsResponseString"
+ rm response.out
+ rm id.out
+ rm jobDetails.out
+ rm jobLogs.out
  if [ $success -eq 0 ]; then
    exit -1;
 fi
