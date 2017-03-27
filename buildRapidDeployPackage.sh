@@ -1,11 +1,5 @@
 #!/bin/bash
 
-RAPIDDEPLOY_URL="http://cf390e9a.ngrok.io/MidVision"
-RAPIDDEPLOY_AUTH_TOKEN="bXZhZG1pbjp7X01WQEVOQyNffVdHLzFmNVMreVpRPQ=="
-RAPIDDEPLOY_PROJECT="testSubConditionals"
-RAPIDDEPLOY_PACKAGE_NAME="testSubConditionals-0.0.9"
-RAPIDDEPLOY_ARCHIVE_EXTENSION="zip"
-
 if [ -z "$RAPIDDEPLOY_URL" ];
 then
   echo "RapidDeploy URL is not set. Job failed";
@@ -32,9 +26,7 @@ then
   exit -1;
 fi
 
-curl -X PUT -i -H "Authorization: $RAPIDDEPLOY_AUTH_TOKEN" $RAPIDDEPLOY_URL/ws/deployment/$RAPIDDEPLOY_PROJECT/package/create?packageName=$RAPIDDEPLOY_PACKAGE_NAME&archiveExtension=$RAPIDDEPLOY_ARCHIVE_EXTENSION > response.out
-sleep 10
-echo $(cat response.out)
+curl -X PUT -i -H "Authorization: $RAPIDDEPLOY_AUTH_TOKEN" "$RAPIDDEPLOY_URL/ws/deployment/$RAPIDDEPLOY_PROJECT/package/create?packageName=$RAPIDDEPLOY_PACKAGE_NAME&archiveExtension=$RAPIDDEPLOY_ARCHIVE_EXTENSION" > response.out
 
 #curl -X PUT -i -H "Authorization: $RAPIDDEPLOY_AUTH_TOKEN" $RAPIDDEPLOY_URL/ws/deployment/$RAPIDDEPLOY_PROJECT/runjob/deploy/$RAPIDDEPLOY_SERVER/$RAPIDDEPLOY_ENVIRONMENT/$RAPIDDEPLOY_APPLICATION > response.out
 awk '{for (I=1;I<=NF;I++) if ($I == "Id") {print $(I+1)};}' response.out > id.out
@@ -91,6 +83,10 @@ while [ $runningJob -eq 1 ]
  curl -X GET -i -H "Authorization: $RAPIDDEPLOY_AUTH_TOKEN" $RAPIDDEPLOY_URL/ws/deployment/showlog/job/$id > jobLogs.out
  jobLogsResponseString=$(cat jobLogs.out)
  echo "$jobLogsResponseString"
+ rm response.out
+ rm id.out
+ rm jobDetails.out
+ rm jobLogs.out
  if [ $success -eq 0 ]; then
    exit -1;
 fi
