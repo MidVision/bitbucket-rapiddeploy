@@ -27,7 +27,7 @@ then
   exit -1;
 fi
 
-curl -X PUT -i -H "Authorization: $RAPIDDEPLOY_AUTH_TOKEN" $RAPIDDEPLOY_URL/ws/deployment/$RAPIDDEPLOY_PROJECT/package/create?packageName=$RAPIDDEPLOY_PACKAGE_NAME > response.out
+curl -X PUT -i -H "Authorization: $RAPIDDEPLOY_AUTH_TOKEN" $RAPIDDEPLOY_URL/ws/deployment/$RAPIDDEPLOY_PROJECT/package/create?packageName=$RAPIDDEPLOY_PACKAGE_NAME&archiveExtension=$RAPIDDEPLOY_ARCHIVE_EXTENSION > response.out
 
 
 
