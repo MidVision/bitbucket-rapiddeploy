@@ -1,5 +1,10 @@
 #!/bin/bash
 
+RAPIDDEPLOY_URL="http://cf390e9a.ngrok.io/MidVision"
+RAPIDDEPLOY_AUTH_TOKEN="bXZhZG1pbjp7X01WQEVOQyNffVdHLzFmNVMreVpRPQ=="
+RAPIDDEPLOY_PROJECT="testSubConditionals"
+RAPIDDEPLOY_PACKAGE_NAME="testSubConditionals-0.0.9"
+RAPIDDEPLOY_ARCHIVE_EXTENSION="zip"
 
 if [ -z "$RAPIDDEPLOY_URL" ];
 then
@@ -28,7 +33,7 @@ then
 fi
 
 curl -X PUT -i -H "Authorization: $RAPIDDEPLOY_AUTH_TOKEN" $RAPIDDEPLOY_URL/ws/deployment/$RAPIDDEPLOY_PROJECT/package/create?packageName=$RAPIDDEPLOY_PACKAGE_NAME&archiveExtension=$RAPIDDEPLOY_ARCHIVE_EXTENSION > response.out
-
+sleep 10
 echo $(cat response.out)
 
 #curl -X PUT -i -H "Authorization: $RAPIDDEPLOY_AUTH_TOKEN" $RAPIDDEPLOY_URL/ws/deployment/$RAPIDDEPLOY_PROJECT/runjob/deploy/$RAPIDDEPLOY_SERVER/$RAPIDDEPLOY_ENVIRONMENT/$RAPIDDEPLOY_APPLICATION > response.out
