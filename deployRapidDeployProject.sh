@@ -1,6 +1,44 @@
 #!/bin/bash
 
-curl -X PUT -i -H "Authorization: $RAPIDDEPLOY_AUTH_TOKEN" $RAPIDDEPLOY_URL/ws/deployment/$RAPIDDEPLOY_PROJECT/runjob/deploy/$RAPIDDEPLOY_SERVER/$RAPIDDEPLOY_ENVIRONMENT/$RAPIDDEPLOY_APPLICATION > response.out
+
+if [ -z "$RAPIDDEPLOY_URL" ];
+then
+  echo "RapidDeploy URL is not set. Job failed";
+  exit -1;
+fi
+if [ -z "$RAPIDDEPLOY_AUTH_TOKEN" ];
+then
+  echo "Authentication token not set. Job failed";
+  exit -1;
+fi
+if [ -z "$RAPIDDEPLOY_PROJECT" ];
+then
+  echo "RapidDeploy project name is not set. Job failed";
+  exit -1;
+fi
+if [ -z "$RAPIDDEPLOY_SERVER" ];
+then
+  echo "RapidDeploy server name is not set. Job failed";
+  exit -1;
+fi
+if [ -z "$RAPIDDEPLOY_ENVIRONMENT" ];
+then
+  echo "RapidDeploy environment name is not set. Job failed";
+  exit -1;
+fi
+if [ -z "$RAPIDDEPLOY_APPLICATION" ];
+then
+  echo "RapidDeploy application name is not set. Job failed";
+  exit -1;
+fi
+if [ -z "$RAPIDDEPLOY_PACKAGE_NAME" ];
+then
+  curl -X PUT -i -H "Authorization: $RAPIDDEPLOY_AUTH_TOKEN" $RAPIDDEPLOY_URL/ws/deployment/$RAPIDDEPLOY_PROJECT/runjob/deploy/$RAPIDDEPLOY_SERVER/$RAPIDDEPLOY_ENVIRONMENT/$RAPIDDEPLOY_APPLICATION > response.out
+else
+  curl -X PUT -i -H "Authorization: $RAPIDDEPLOY_AUTH_TOKEN" $RAPIDDEPLOY_URL/ws/deployment/$RAPIDDEPLOY_PROJECT/runjob/deploy/$RAPIDDEPLOY_SERVER/$RAPIDDEPLOY_ENVIRONMENT/$RAPIDDEPLOY_APPLICATION?&packageName=$RAPIDDEPLOY_PACKAGE_NAME > response.out
+fi
+
+#curl -X PUT -i -H "Authorization: $RAPIDDEPLOY_AUTH_TOKEN" $RAPIDDEPLOY_URL/ws/deployment/$RAPIDDEPLOY_PROJECT/runjob/deploy/$RAPIDDEPLOY_SERVER/$RAPIDDEPLOY_ENVIRONMENT/$RAPIDDEPLOY_APPLICATION > response.out
 awk '{for (I=1;I<=NF;I++) if ($I == "Id") {print $(I+1)};}' response.out > id.out
 #rm -rf response.out
 id=$(cat id.out | egrep -o '[^][]+')
