@@ -45,3 +45,19 @@ If you now push some changes to your repository new package will be automaticall
 ![Successful build package on RapidDeploy](/successfulBuildPackageRD.png "Successful build package on RapidDeploy")
 
 
+
+```
+- git clone https://github.com/MidVision/bitbucket-rapiddeploy.git
+- cd bitbucket-rapiddeploy
+- chmod u+x deployRapidDeployProject.sh
+- ./deployRapidDeployProject.sh
+```
+
+
+
+```
+- git clone https://github.com/MidVision/bitbucket-rapiddeploy.git
+- cd bitbucket-rapiddeploy
+- chmod u+x runRapidDeployJobPlan.sh
+- ./runRapidDeployJobPlan.sh
+```
