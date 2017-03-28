@@ -17,8 +17,8 @@ then
 fi
 if [ -z "$RAPIDDEPLOY_PACKAGE_NAME" ];
 then
-  echo "RapidDeploy package name is not set. Job failed";
-  exit -1;
+  echo "RapidDeploy package name is not set. Package name will be set automatically";
+  # exit -1;
 fi
 if [ -z "$RAPIDDEPLOY_ARCHIVE_EXTENSION" ];
 then
