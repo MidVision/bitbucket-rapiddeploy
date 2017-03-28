@@ -19,7 +19,23 @@ In order to build RapidDeploy package you need to specify following Bitbucket En
 * RapidDeploy project: RapidDeploy project name, which you want to build a package for.
 * Package name (optional): set a specific package name. If not filled, the next version will be assigned to the package automatically. This field doesn’t have to be used in general.
 * Archive extension: choose the package type from a list of extensions.
-![Adding bitbucket environment variables](https://raw.githubusercontent.com/MidVision/bitbucket-rapiddeploy/AddingBitbucketEnvVariables.png "Adding bitbucket environment variables")
+
+
+![Adding bitbucket environment variables](/AddingBitbucketEnvVariables.png "Adding bitbucket environment variables")
+
+
+After adding RapidDeploy attributes you need to add your Bitbucket Pipeline configuration. In order to enable Bitbucket Pipelines you need to put bitbucket-pipelines.yml file to your repository (to the top level).  
+By adding these four lines below you will integrate your Bitbucket repository with RapidDeploy, so that every time the commit is pushed to the repository - new package will be built on specified RapidDeploy instance for specified RapidDeploy project.
+'''
+- git clone https://github.com/MidVision/bitbucket-rapiddeploy.git
+- cd bitbucket-rapiddeploy
+- chmod u+x buildRapidDeployPackage.sh
+- ./buildRapidDeployPackage.sh
+'''
+
+So your bitbucket-pipelines.yml file may look like that:
+
+![Pipeline configuration for build task](/pipelineConfForBuildTask.png "Pipeline configuration for RD build task")
 
 
 
