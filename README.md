@@ -6,9 +6,9 @@ Bitbucket Pipelines is a new continuous delivery feature built within Bitbucket 
 
 
 There are three actions that you can use in your Bitbucket Pipeline
-* [RapidDeploy build package task](http://docs.midvision.com/LATEST/project/package.html) invoke RapidDeploy server to build a package in the configured artifact repository. You can check the result and the log output in the Pipelines logs in Bitbucket.
-* [RapidDeploy project deploy task](http://docs.midvision.com/LATEST/project/deployment.html) invoke a deployment task in RapidDeploy server. Multiple deployments can be executed sequentially or parallel. You can check the result and the process logs in the Pipelines logs in Bitbucket.
-* [RapidDeploy run job plan task](http://portal.midvision.com/page/job-plan-how-to) invoke a job plan from RapidDeploy server. You can check the result and the process logs in the Pipelines logs in Bitbucket.
+* [RapidDeploy build package task](https://github.com/MidVision/bitbucket-rapiddeploy#building-rapiddeploy-package-from-bitbucket-pipelines) invoke RapidDeploy server to build a package in the configured artifact repository. You can check the result and the log output in the Pipelines logs in Bitbucket.
+* [RapidDeploy project deploy task](https://github.com/MidVision/bitbucket-rapiddeploy#deploying-rapiddeploy-project-from-bitbucket-pipelines) invoke a deployment task in RapidDeploy server. Multiple deployments can be executed sequentially or parallel. You can check the result and the process logs in the Pipelines logs in Bitbucket.
+* [RapidDeploy run job plan task](https://github.com/MidVision/bitbucket-rapiddeploy#running-rapiddeploy-job-plan-from-bitbucket-pipelines) invoke a job plan from RapidDeploy server. You can check the result and the process logs in the Pipelines logs in Bitbucket.
 
 
 ### Building RapidDeploy package from Bitbucket Pipelines
