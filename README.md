@@ -19,7 +19,7 @@ In order to build RapidDeploy package you need to specify following Bitbucket En
 * RapidDeploy project: RapidDeploy project name, which you want to build a package for.
 * Package name (optional): set a specific package name. If not filled, the next version will be assigned to the package automatically. This field doesn’t have to be used in general.
 * Archive extension: choose the package type from a list of extensions.
-![Adding bitbucket environment variables](https://raw.githubusercontent.com/MidVision/bitbucket-rapiddeploy/AddingBitbucketEnvVariables.png "Adding bitbucket environment variables")
+![Adding bitbucket environment variables](AddingBitbucketEnvVariables.png "Adding bitbucket environment variables")
 
 
 
